@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Merhaba ve Saat</title>
+    <script>
+        function showTime() {
+            var today = new Date();
+            var hour = today.getHours();
+            var minute = today.getMinutes();
+            var second = today.getSeconds();
+
+            // Saati çift haneli sayılarla göstermek için düzenleme
+            hour = formatTime(hour);
+            minute = formatTime(minute);
+            second = formatTime(second);
+
+            // Gün bilgisini al
+            var days = ["Pazar", "Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi"];
+            var day = days[today.getDay()];
+
+            // İsme göre karşılama metnini oluştur
+            var name = document.getElementById("name").value;
+            var greeting = "Merhaba, " + name + "! ";
+            var time = "Şu an saat " + hour + ":" + minute + ":" + second + ", " + day + " günü.";
+
+            // Mesajı ekrana yazdır
+            var message = greeting + time;
+            document.getElementById("message").innerText = message;
+        }
+
+        function formatTime(time) {
+            if (time < 10) {
+                time = "0" + time;
+            }
+            return time;
+        }
+    </script>
+    <link rel="stylesheet" href="b1.css">
+</head>
+<body>
+    <h1>Merhaba ve Saat</h1>
+    <label for="name">Adınızı girin:</label>
+    <input type="text" id="name" />
+    <button onclick="showTime()">Saati Göster</button>
+    <p id="message"></p>
+</body>
+</html>
